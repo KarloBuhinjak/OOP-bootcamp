@@ -8,7 +8,7 @@ public class MenuManager
         string name = Console.ReadLine();
 
         Console.WriteLine("Enter the player's age:");
-        int age = int.Parse(Console.ReadLine());
+        int age = GetValidIntegerInput();
 
         Console.WriteLine("Enter the player's position:");
         string position = Console.ReadLine();
@@ -20,15 +20,15 @@ public class MenuManager
         Club club = new Club(clubName, clubCountry);
         
         Console.WriteLine($"Enter the number of total goals scored by {name}:");
-        int totalGoals = int.Parse(Console.ReadLine());
+        int totalGoals = GetValidIntegerInput();
         Console.WriteLine($"Enter the number of total assists assisted by {name}:");
-        int totalAssists = int.Parse(Console.ReadLine());
+        int totalAssists = GetValidIntegerInput();
         Console.WriteLine($"Enter the number of {name}'s total yellow cards:");
-        int totalYellowCards = int.Parse(Console.ReadLine());
+        int totalYellowCards = GetValidIntegerInput();
         Console.WriteLine($"Enter the number of {name}'s total red cards:");
-        int totalRedCards = int.Parse(Console.ReadLine());
+        int totalRedCards = GetValidIntegerInput();
         Console.WriteLine($"Enter the number of {name}'s total matches:");
-        int totalMatches = int.Parse(Console.ReadLine());
+        int totalMatches = GetValidIntegerInput();
         
 
         FootballPlayer player = new FootballPlayer(name, age, position, club, totalGoals, totalAssists, totalYellowCards, totalRedCards, totalMatches);
@@ -51,16 +51,62 @@ public class MenuManager
             player.DisplayInfo();
         }
     }
-    
-    public void SearchPlayer(List<FootballPlayer> players)
+    public void EditPlayer(List<FootballPlayer> players)
     {
-        Console.WriteLine("Enter the name of the player to search:");
-        string searchName = Console.ReadLine();
+        Console.WriteLine("Enter the name of the player to edit:");
+        string editName = Console.ReadLine();
 
-        FootballPlayer player = FindPlayerByName(players, searchName);
+        FootballPlayer player = FindPlayerByName(players, editName);
         if (player != null)
         {
+            Console.WriteLine("Current player info:");
             player.DisplayInfo();
+
+            Console.WriteLine("Enter new age (or press Enter to keep current):");
+            
+            int? newAge = GetValidIntegerInput();
+            if (newAge.HasValue)
+                player.Age = newAge.Value;
+            Console.WriteLine("Enter new position (or press Enter to keep current):");
+            string newPosition = Console.ReadLine();
+            if (!string.IsNullOrEmpty(newPosition))
+                player.Position = newPosition;
+
+            Console.WriteLine("Enter new club name (or press Enter to keep current):");
+            string newClubName = Console.ReadLine();
+            if (!string.IsNullOrEmpty(newClubName))
+            {
+                Console.WriteLine("Enter new club country:");
+                string newClubCountry = Console.ReadLine();
+                player.Club = new Club(newClubName, newClubCountry);
+            }
+
+            Console.WriteLine("Enter new number of goals scored (or press Enter to keep current):");
+            int? newGoalsScored = GetValidIntegerInput();
+            if (newGoalsScored.HasValue)
+                player.GoalsScored = newGoalsScored.Value;
+
+            Console.WriteLine("Enter new number of assists (or press Enter to keep current):");
+            int? newAssists = GetValidIntegerInput();
+            if (newAssists.HasValue)
+                player.Assists = newAssists.Value;
+
+            Console.WriteLine("Enter new number of yellow cards (or press Enter to keep current):");
+            int? newYellowCards = GetValidIntegerInput();
+            if (newYellowCards.HasValue)
+                player.YellowCards = newYellowCards.Value;
+
+            Console.WriteLine("Enter new number of red cards (or press Enter to keep current):");
+            int? newRedCards = GetValidIntegerInput();
+            if (newRedCards.HasValue)
+                player.RedCards = newRedCards.Value;
+
+            Console.WriteLine("Enter new number of total matches (or press Enter to keep current):");
+            int? newTotalMatches = GetValidIntegerInput();
+            if (newTotalMatches.HasValue)
+                player.TotalMatches = newTotalMatches.Value;
+
+            Console.WriteLine("Player info updated.");
         }
         else
         {
@@ -78,6 +124,22 @@ public class MenuManager
         {
             players.Remove(player);
             Console.WriteLine("Player successfully deleted.");
+        }
+        else
+        {
+            Console.WriteLine("Player not found.");
+        }
+    }
+    
+    public void SearchPlayer(List<FootballPlayer> players)
+    {
+        Console.WriteLine("Enter the name of the player to search:");
+        string searchName = Console.ReadLine();
+
+        FootballPlayer player = FindPlayerByName(players, searchName);
+        if (player != null)
+        {
+            player.DisplayInfo();
         }
         else
         {
@@ -110,9 +172,26 @@ public class MenuManager
             Console.WriteLine("Player not found.");
         }
     }
-
+    
     private FootballPlayer FindPlayerByName(List<FootballPlayer> players, string playerName)
     {
         return players.Find(player => player.Name.Equals(playerName, StringComparison.OrdinalIgnoreCase));
+    }
+    private int GetValidIntegerInput()
+    {
+        int result;
+        while (true)
+        {
+            string input = Console.ReadLine();
+            if (int.TryParse(input, out result))
+            {
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid input. Please enter a valid number.");
+            }
+        }
+        return result;
     }
 }

@@ -18,8 +18,9 @@ namespace OOP_bootcamp
                 Console.WriteLine("2. Print all players");
                 Console.WriteLine("3. Search for a player");
                 Console.WriteLine("4. Show player stats");
-                Console.WriteLine("5. Delete a player");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("5. Edit player");
+                Console.WriteLine("6. Delete a player");
+                Console.WriteLine("7. Exit");
 
                 string choice = Console.ReadLine();
 
@@ -38,9 +39,12 @@ namespace OOP_bootcamp
                         menuManager.ShowPlayerStats(players);
                         break;
                     case "5":
-                        menuManager.DeletePlayer(players);
+                        menuManager.EditPlayer(players);
                         break;
                     case "6":
+                        menuManager.DeletePlayer(players);
+                        break;
+                    case "7":
                         return;
                     default:
                         Console.WriteLine("Invalid choice. Please try again.");
