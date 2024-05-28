@@ -1,0 +1,15 @@
+/Users/karlobuhinjak/Desktop/OOP-bootcamp/bin/Debug/net8.0/OOP-bootcamp
+/Users/karlobuhinjak/Desktop/OOP-bootcamp/bin/Debug/net8.0/OOP-bootcamp.deps.json
+/Users/karlobuhinjak/Desktop/OOP-bootcamp/bin/Debug/net8.0/OOP-bootcamp.runtimeconfig.json
+/Users/karlobuhinjak/Desktop/OOP-bootcamp/bin/Debug/net8.0/OOP-bootcamp.dll
+/Users/karlobuhinjak/Desktop/OOP-bootcamp/bin/Debug/net8.0/OOP-bootcamp.pdb
+/Users/karlobuhinjak/Desktop/OOP-bootcamp/obj/Debug/net8.0/OOP-bootcamp.GeneratedMSBuildEditorConfig.editorconfig
+/Users/karlobuhinjak/Desktop/OOP-bootcamp/obj/Debug/net8.0/OOP-bootcamp.AssemblyInfoInputs.cache
+/Users/karlobuhinjak/Desktop/OOP-bootcamp/obj/Debug/net8.0/OOP-bootcamp.AssemblyInfo.cs
+/Users/karlobuhinjak/Desktop/OOP-bootcamp/obj/Debug/net8.0/OOP-bootcamp.csproj.CoreCompileInputs.cache
+/Users/karlobuhinjak/Desktop/OOP-bootcamp/obj/Debug/net8.0/OOP-bootcamp.sourcelink.json
+/Users/karlobuhinjak/Desktop/OOP-bootcamp/obj/Debug/net8.0/OOP-bootcamp.dll
+/Users/karlobuhinjak/Desktop/OOP-bootcamp/obj/Debug/net8.0/refint/OOP-bootcamp.dll
+/Users/karlobuhinjak/Desktop/OOP-bootcamp/obj/Debug/net8.0/OOP-bootcamp.pdb
+/Users/karlobuhinjak/Desktop/OOP-bootcamp/obj/Debug/net8.0/OOP-bootcamp.genruntimeconfig.cache
+/Users/karlobuhinjak/Desktop/OOP-bootcamp/obj/Debug/net8.0/ref/OOP-bootcamp.dll
