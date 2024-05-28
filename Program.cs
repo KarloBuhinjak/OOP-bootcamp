@@ -1,32 +1,54 @@
-﻿namespace OOP_bootcamp
+﻿using System;
+using System.Collections.Generic;
+
+namespace OOP_bootcamp
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Club barcelona = new Club("FC Barcelona", "Spain");
-            FootballPlayer messi = new FootballPlayer("Lionel Messi", 34, "Forward", barcelona);
-            messi.GoalsScored = 50;
-            messi.Assists = 30;
-            int totalGoalsAndAssistsMessi = messi.CalculateTotalGoalsAndAssists(messi.GoalsScored, messi.Assists);
-            Console.WriteLine($"Total goals and assists: {totalGoalsAndAssistsMessi}");
-            
-            FootballPlayer xavi = new FootballPlayer("Xavi", 37, "Midfielder", barcelona);
-            messi.GoalsScored = 5;
-            messi.Assists = 16;
-            int totalGoalsAndAssistsXavi = messi.CalculateTotalGoalsAndAssists(messi.GoalsScored, messi.Assists);
-            Console.WriteLine($"Total goals and assists: {totalGoalsAndAssistsXavi}");
-            
             List<FootballPlayer> players = new List<FootballPlayer>();
-            players.Add(messi);
-            players.Add(xavi);
-            
-            foreach (FootballPlayer player in players)
+            MenuManager menuManager = new MenuManager();
+
+            while (true)
             {
-                player.DisplayInfo();
+                Console.WriteLine("Choose an option:");
                 
+                Console.WriteLine("1. Add a new player");
+                Console.WriteLine("2. Print all players");
+                Console.WriteLine("3. Search for a player");
+                Console.WriteLine("4. Show player stats");
+                Console.WriteLine("5. Delete a player");
+                Console.WriteLine("6. Exit");
+
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        menuManager.AddNewPlayer(players);
+                        break;
+                    case "2":
+                        menuManager.PrintAllPlayers(players);
+                        break;
+                    case "3":
+                        menuManager.SearchPlayer(players);
+                        break;
+                    case "4":
+                        menuManager.ShowPlayerStats(players);
+                        break;
+                    case "5":
+                        menuManager.DeletePlayer(players);
+                        break;
+                    case "6":
+                        return;
+                    default:
+                        Console.WriteLine("Invalid choice. Please try again.");
+                        break;
+                }
+                Console.WriteLine("Press Enter to return to the main menu...");
+                Console.ReadLine();
             }
-            
         }
     }
 }
